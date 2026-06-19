@@ -1,0 +1,28 @@
+---
+interface Props {
+  sticky?: boolean;
+}
+const { sticky = false } = Astro.props;
+---
+
+{sticky ? (
+  <div class="sticky-nav" id="sticky-nav">
+    <div class="sticky-nav-inner">
+      <a href="/" class="logo">Maïa<em>.</em></a>
+      <div class="nav-right">
+        <a href="#how-it-works" class="js-scroll" data-target="how-it-works">How it works</a>
+        <a href="https://tally.so/r/WOQAje" target="_blank" rel="noopener" class="nav-cta">Join the beta</a>
+      </div>
+    </div>
+  </div>
+) : (
+  <div class="container">
+    <nav>
+      <a href="/" class="logo">Maïa<em>.</em></a>
+      <div class="nav-right">
+        <a href="#how-it-works" class="js-scroll" data-target="how-it-works">How it works</a>
+        <a href="https://tally.so/r/WOQAje" target="_blank" rel="noopener" class="nav-cta">Join the beta</a>
+      </div>
+    </nav>
+  </div>
+)}

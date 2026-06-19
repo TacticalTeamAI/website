@@ -1,0 +1,52 @@
+---
+const confessions = [
+  {
+    tag: 'tag-burned',
+    label: 'Budget burned',
+    text: '"I ran ads. Burned my entire budget in 2 days. <em>Almost zero ROI.</em>"',
+  },
+  {
+    tag: 'tag-tried',
+    label: 'Tried it',
+    text: '"I tried building in public. Got followers alright: <em>other devs.</em> Zero new users."',
+  },
+  {
+    tag: 'tag-gave-up',
+    label: 'Gave up day 3',
+    text: '"Instagram. TikTok. UGC. 3 days in, <em>11 views, zero signups.</em> Never again."',
+  },
+  {
+    tag: 'tag-banned',
+    label: 'Banned',
+    text: '"Tried Reddit. Got banned in 48h <em>like a complete amateur.</em>"',
+  },
+  {
+    tag: 'tag-strategy',
+    label: 'Current strategy',
+    text: '"My marketing strategy right now? <em>Freestyle. Pray. Repeat.</em>"',
+  },
+  {
+    tag: 'tag-soon',
+    label: 'One more feature',
+    text: '"If I add <em>one more feature,</em> I\'ll finally get users. Feature #17 incoming."',
+  },
+];
+---
+
+<section class="before" id="next-section">
+  <div class="container">
+
+    <p class="before-eyebrow">Before Maïa</p>
+    <h2 class="before-title">Sound familiar? <em>Yeah.<br />We've all been there.</em></h2>
+
+    <div class="confessions">
+      {confessions.map((c) => (
+        <div class="confession">
+          <span class={`confession-badge ${c.tag}`}>{c.label}</span>
+          <p class="confession-text" set:html={c.text} />
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

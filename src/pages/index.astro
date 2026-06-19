@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import BeforeSection from '../components/BeforeSection.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Testimonial from '../components/Testimonial.astro';
+---
+
+<Layout>
+  <Nav sticky />
+  <Hero />
+
+  <div class="page-content">
+    <BeforeSection />
+    <HowItWorks />
+    <Testimonial />
+  </div>
+</Layout>
+
+<script>
+  // Smooth scroll for all .js-scroll elements
+  document.querySelectorAll<HTMLElement>('.js-scroll').forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = el.dataset.target;
+      if (target) {
+        document.getElementById(target)?.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Staggered scroll reveal for confession cards
+  const cards = document.querySelectorAll<HTMLElement>('.confession');
+  const cardObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const card = entry.target as HTMLElement;
+          const i = [...cards].indexOf(card);
+          setTimeout(() => card.classList.add('visible'), i * 80);
+          cardObserver.unobserve(card);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+  cards.forEach((c) => cardObserver.observe(c));
+
+  // Sticky nav on scroll
+  const stickyNav = document.getElementById('sticky-nav');
+  const heroFrame = document.querySelector('.hero-frame');
+  if (stickyNav && heroFrame) {
+    const heroObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          stickyNav.classList.toggle('visible', !entry.isIntersecting);
+        });
+      },
+      { threshold: 0.1 }
+    );
+    heroObserver.observe(heroFrame);
+  }
+
+  // Beta form — redirect to Tally with email prefilled
+  const betaForm = document.getElementById('beta-form') as HTMLFormElement | null;
+  betaForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = (betaForm.querySelector('input[type="email"]') as HTMLInputElement).value;
+    window.open(`https://tally.so/r/WOQAje?email=${encodeURIComponent(email)}`, '_blank');
+  });
+</script>

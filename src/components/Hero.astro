@@ -1,0 +1,51 @@
+---
+import Nav from './Nav.astro';
+---
+
+<div class="hero-frame">
+
+  <div class="bg"></div>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <Nav />
+
+  <div class="hero-body">
+    <div class="container">
+      <section class="hero">
+
+        <p class="intro">Hi, I'm Maïa.</p>
+
+        <h1 class="headline">
+          Your <span class="highlight">AI marketing partner</span><br />
+          for founders like you<br />
+          who ship fast<br />
+          and market… <span class="never">never.</span>
+        </h1>
+
+        <p class="subtitle">
+          Every day, Maïa coaches you on exactly what to do to grow your SaaS so you can stop ignoring distribution and start getting real users.
+        </p>
+
+        <form class="beta-form" id="beta-form">
+          <input type="email" placeholder="your@email.com" required autocomplete="email" />
+          <button type="submit">Join the beta →</button>
+        </form>
+
+      </section>
+    </div>
+  </div>
+
+  <img src="/maia.png" alt="Maïa" class="hero-mascot" />
+  <div class="hero-avatar-float">
+    <img src="/avatar.png" alt="Maïa" />
+  </div>
+
+  <div class="scroll-indicator js-scroll" data-target="next-section">
+    <div class="mouse">
+      <div class="mouse-wheel"></div>
+    </div>
+  </div>
+
+</div>
